@@ -21,9 +21,11 @@
 
 # Потом:
 
-sudo ln -s /etc/nginx/sites-available/bezzze.ru /etc/nginx/sites-enabled/
-sudo nginx -t
-sudo systemctl reload nginx
+    sudo ln -s /etc/nginx/sites-available/bezzze.ru /etc/nginx/sites-enabled/
+
+    sudo nginx -t
+
+    sudo systemctl reload nginx
 
 # 🔥 Как запустить
 docker compose up -d
