@@ -12,6 +12,11 @@ services:
       - ./postgres_data:/var/lib/postgresql/data
     networks:
       - n8n_net
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
   mongodb:
     image: mongo:7
@@ -51,8 +56,8 @@ services:
       N8N_HOST: bezzze.ru
       N8N_PORT: 5678
       N8N_PROTOCOL: https
-      WEBHOOK_URL: https://bezzze.ru/
-      N8N_EDITOR_BASE_URL: https://bezzze.ru/
+      WEBHOOK_URL: http://bezzze.ru/n8n/
+      N8N_EDITOR_BASE_URL: http://bezzze.ru/n8n/
 
       DB_TYPE: postgresdb
       DB_POSTGRESDB_HOST: postgres
@@ -67,10 +72,14 @@ services:
     ports:
       - "5678:5678"
     depends_on:
-      - postgres
-      - redis
-      - rabbitmq
-      - mongodb
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_started
+      rabbitmq:
+        condition: service_started
+      mongodb:
+        condition: service_started
     volumes:
       - ./n8n_data:/home/node/n8n
     networks:
