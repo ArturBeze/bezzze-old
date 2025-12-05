@@ -65,3 +65,14 @@ Certbot автоматически настроит сертификаты и р
 # 🔥 Как запустить
 
     docker compose up -d
+
+
+
+Instead of
+
+sudo systemctl restart nginx
+
+I had to use:
+
+sudo pkill -f nginx & wait $!
+sudo systemctl start nginx
