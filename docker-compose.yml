@@ -56,8 +56,8 @@ services:
       N8N_HOST: bezzze.ru
       N8N_PORT: 5678
       N8N_PROTOCOL: https
-      WEBHOOK_URL: http://bezzze.ru/n8n/
-      N8N_EDITOR_BASE_URL: http://bezzze.ru/n8n/
+      WEBHOOK_URL: http://bezzze.ru/
+      N8N_EDITOR_BASE_URL: http://bezzze.ru/
 
       DB_TYPE: postgresdb
       DB_POSTGRESDB_HOST: postgres
