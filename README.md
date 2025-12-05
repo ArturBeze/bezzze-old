@@ -39,6 +39,14 @@
         }
     }
 
+# Потом:
+
+    sudo ln -s /etc/nginx/sites-available/bezzze.ru /etc/nginx/sites-enabled/
+
+    sudo nginx -t
+
+    sudo systemctl reload nginx
+
 # Получение сертификата Let's Encrypt
 
 Используем certbot:
@@ -54,13 +62,6 @@ Certbot автоматически настроит сертификаты и р
 
 После этого n8n будет доступен по https://bezzze.ru
 
-# Потом:
-
-    sudo ln -s /etc/nginx/sites-available/bezzze.ru /etc/nginx/sites-enabled/
-
-    sudo nginx -t
-
-    sudo systemctl reload nginx
-
 # 🔥 Как запустить
-docker compose up -d
+
+    docker compose up -d
